@@ -1,0 +1,9 @@
+<nav>
+    <section class="header">
+        <h1 (click)="navigateToHome()">SUA LOGO AQUI</h1>
+        <section class="search" *ngIf="searchInput">
+            <input type="text" name="Buscar" placeholder="Pesquise aqui..">
+        </section>
+        <button class="cart" (click)="navigateToCart()" *ngIf="cartButton"><i class="fas fa-shopping-cart"></i>&nbsp;&nbsp;Meu Carrinho</button>
+    </section>
+</nav>

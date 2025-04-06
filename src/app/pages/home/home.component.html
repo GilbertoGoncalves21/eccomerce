@@ -1,0 +1,31 @@
+<app-navbar 
+    [searchInput]="searchInput" 
+    [cartButton]="cartButton"
+    (searchInputChange)="onSearchInputChange($event)"
+></app-navbar>
+<main>
+    <section class="filtros">
+        <div class="filtros-container">
+            <ul>
+                <span (click)="filterByCategory(null)">Todos</span>
+                <span *ngFor="let category of categories; trackBy: trackById" (click)="filterByCategory(category)">{{ category.name }}</span>
+            </ul>
+        </div>
+    </section>
+    <section class="lista-produtos">
+        <section class="cards">
+            <mat-card class="card" *ngFor="let product of products; trackBy: trackById" (click)="navigateToProductDetails(product)">
+                <img mat-card-image [src]="product.imagem" alt="Imagem do produto">
+                <mat-card-content class="conteudo">
+                    <h2>{{ product.nome }}</h2>
+                    <p>{{ product.descricao }}</p>
+                    <h5>R$ {{ product.preco | currency:'BRL' }}</h5>
+                </mat-card-content>
+                <mat-card-actions class="adicionarProduto">
+                    <button mat-button color="accent"><i class="fas fa-cart-plus"></i>&nbsp;&nbsp;Adicionar ao Carrinho</button>
+                </mat-card-actions>
+            </mat-card>
+        </section>
+    </section>
+</main>
+<app-footer></app-footer>

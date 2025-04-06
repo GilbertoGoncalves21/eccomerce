@@ -1,0 +1,226 @@
+:host {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow-y: hidden; 
+    overflow-x: hidden;
+
+    main {
+        width: 100%;
+        height: 85vh;
+        margin-top: 5vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        overflow-y: hidden; 
+        overflow-x: hidden;
+
+        .filtros {
+            width: 100%;
+            height: 5vh;
+            top: 0;
+            margin: 0;
+            padding: 0;
+            background-color: rgb(215, 211, 211);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+
+            .filtros-container {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                padding: 0 2rem;
+                overflow-x: auto; 
+                overflow-y: hidden; 
+                
+                ul {
+                    width: 100%;
+                    padding: 0 2rem;
+                    margin: 0;
+                    display: flex;
+                    flex-direction: row;
+                    gap: 1rem;
+                    white-space: nowrap;
+                    list-style: none;
+        
+                    span {
+                        width: 15%;
+                        flex: 0 0 auto;
+                        text-align: center;
+                        font-size: 0.8rem;
+                        font-family: "Noto Sans Canadian Aboriginal", sans-serif;
+                        transition: all 0.2s ease-in-out;
+
+                        &:hover {
+                            cursor: pointer;
+                            transform: scale(1.05);
+                            font-weight: 600;
+                        }
+                    }
+                }
+
+                &::-webkit-scrollbar {
+                    height: 4px; // controla a altura da barra horizontal
+                }
+            
+                &::-webkit-scrollbar-thumb {
+                    background-color: rgba(0, 0, 0, 0.3); // cor da barra
+                    border-radius: 2px;
+                }
+            
+                &::-webkit-scrollbar-track {
+                    background: transparent; // ou defina outra cor se quiser
+                }
+            }
+        }
+
+        .lista-produtos {
+            width: 100%;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;            
+
+            .cards {
+                height: 100% !important;
+                width: 100%;
+                display: flex;
+                padding: 2rem 2%;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: start;
+                gap: 2rem;
+                overflow-y: auto;
+                overflow-x: hidden;
+
+                .card {
+                    padding: 0;
+                    width: 22%;
+                    height: 300px;
+                    padding-bottom: 5vh;
+                    box-sizing: border-box;
+                    position: relative;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 25px !important;
+                    transition: all 0.3s ease-in-out;
+
+                    &:hover {
+                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+                        transform: scale(1.05);
+                    }
+
+                    img {
+                        width: 100%;
+                        height: 150px;
+                        object-fit: cover;
+                        position: absolute;
+                        top: 0;
+                    }
+
+                    .conteudo {
+                        width: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        position: absolute;
+                        top: 155px;
+
+                        h2 {
+                            font-size: 1.5rem;
+                            text-align: center;
+                            font-family: "Noto Sans Canadian Aboriginal", sans-serif;
+                            margin: 0;
+                            padding: 0;
+                        }
+
+                        h5 {
+                            font-size: 1.2rem;
+                            text-align: center;
+                            font-family: "Noto Sans Canadian Aboriginal", sans-serif;
+                            font-weight: 400;
+                            margin: 0.5rem 0;
+                            padding: 0;
+                        }
+
+                        p {
+                            font-size: 1rem;
+                            text-align: center;
+                            font-family: "Noto Sans Canadian Aboriginal", sans-serif;
+                            margin: 0.2rem 0;
+                            padding: 0;
+                        }
+                    }
+    
+                    .adicionarProduto {
+                        width: 80%;
+                        height: 10%;
+                        margin-top: 0.5rem;
+                        bottom: 0.1rem;
+                        position: absolute;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        border-radius: 5px;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+    
+    @media (max-width: 1350px) {
+        main {
+            .lista-produtos {
+                .cards {
+                    .card {
+                        width: 30%;
+                    }
+                }
+            }
+        }
+    }
+    
+    @media (max-width: 900px) {
+        main {
+            .filtros {
+                height: 10vh;
+            }
+            .lista-produtos {
+                height: 75vh;
+
+                .cards {
+                    padding: 2rem 0;
+                    .card {
+                        width: 45%;
+                    }
+                }
+            }
+        }
+    }
+    
+    @media (max-width: 650px) {
+        main {
+            .lista-produtos {
+                .cards {
+                    .card {
+                        width: 80%;
+                    }
+                }
+            }
+        }
+    }
+}
