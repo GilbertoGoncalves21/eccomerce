@@ -19,7 +19,7 @@
                 <mat-card-content class="conteudo">
                     <h2>{{ product.nome }}</h2>
                     <p>{{ product.descricao }}</p>
-                    <h5>R$ {{ product.preco | currency:'BRL' }}</h5>
+                    <h5>{{ product.preco | currency:'BRL' }}</h5>
                 </mat-card-content>
                 <mat-card-actions class="adicionarProduto">
                     <button mat-button color="accent"><i class="fas fa-cart-plus"></i>&nbsp;&nbsp;Adicionar ao Carrinho</button>
