@@ -18,7 +18,9 @@
                 <img mat-card-image [src]="product.imagem" alt="Imagem do produto">
                 <mat-card-content class="conteudo">
                     <h2>{{ product.nome }}</h2>
-                    <p>{{ product.descricao }}</p>
+                    <span class="badge">
+                        {{ getCategoryNameById(product.id_category) }}
+                      </span>
                     <h5>{{ product.preco | currency:'BRL' }}</h5>
                 </mat-card-content>
                 <mat-card-actions class="adicionarProduto">

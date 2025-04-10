@@ -34,6 +34,11 @@ export class HomeComponent {
     get cartButton() {
       return this._cartButton;
     }
+    
+    getCategoryNameById(id: number): string {
+      const category = this._categories.find(c => c.id === id);
+      return category ? category.name : '';
+    }
 
     trackById(index: number, item: Product | Category): number {
       return item.id;

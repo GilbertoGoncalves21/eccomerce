@@ -1,0 +1,227 @@
+:host {
+  overflow-y: hidden;
+  height: 100%;
+  width: 100%;
+  main {
+    padding-top: 10vh;
+    margin-bottom: 5vh;
+    height: 85vh;
+    width: 100%;
+    overflow-y: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    .product-main {
+      display: flex;
+      width: 60%;
+      height: 80%;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      padding: 2rem;
+      border: 1px solid black;
+      border-radius: 50px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+
+      .image {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50%;
+        padding: 0 2rem;
+
+        img {
+          width: 100%;
+          height: 30rem;
+          border-radius: 15px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          object-fit: cover;
+        }
+      }
+
+      .image-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+
+        img {
+          max-width: 90%;
+          max-height: 90%;
+          border-radius: 8px;
+          box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+      }
+
+      .description {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 1rem;
+
+        h1 {
+          font-size: 2rem;
+          font-family: "Noto Sans Canadian Aboriginal", sans-serif;
+          margin: 0;
+          padding: 0;
+        }
+
+        h2 {
+          font-size: 1.5rem;
+          padding: 1rem 2rem;
+          font-family: "Noto Sans Canadian Aboriginal", sans-serif;
+          color: green;
+          margin: 0;
+          padding: 0;
+        }
+
+        .badge {
+          display: inline-block;
+          background-color: #e0f2e9; // verde bem clarinho
+          color: #2e7d32;
+          padding: 0.3rem 0.75rem;
+          font-size: 0.75rem;
+          font-weight: 600;
+          border-radius: 999px;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          white-space: nowrap;
+          max-width: max-content;
+          font-family: "Noto Sans Canadian Aboriginal", sans-serif;
+        }
+
+        p {
+          font-size: 1rem;
+          font-family: "Noto Sans Canadian Aboriginal", sans-serif;
+          line-height: 1.5;
+          margin: 0;
+          padding: 0;
+        }
+
+        .add-to-cart {
+          margin-top: 1rem;
+          padding: 0.75rem 1.5rem;
+          background-color: green;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          font-weight: bold;
+          font-size: 1rem;
+          transition: transform ease-in-out 200ms;
+
+          &:hover {
+            background-color: darkgreen;
+            transform: scale(1.05);
+          }
+        }
+
+        .back-to-home {
+          margin-top: 1rem;
+          padding: 0.75rem 1.5rem;
+          background-color: red;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          font-weight: bold;
+          font-size: 1rem;
+          transition: transform ease-in-out 200ms;
+
+          &:hover {
+            background-color: darkred;
+            transform: scale(1.05);
+          }
+        }
+      }
+    }
+
+    @media (max-width: 1300px) {
+      .product-main {
+        width: 70%;
+      }
+    }
+
+    @media (max-width: 1000px) {
+      .product-main {
+        width: 80%;
+      }
+    }
+
+    @media (max-width: 800px) {
+      .product-main {
+        width: 80%;
+        height: 85%;
+        flex-direction: column;
+        gap: 0;
+
+        .image {
+          width: 90%;
+          height: 30rem;
+          overflow: hidden;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        .description {
+          width: 85%;
+          padding: 1rem;
+          background-color: #fff;
+          border-top-left-radius: 20px;
+          border-top-right-radius: 20px;
+          margin-top: -1rem;
+
+          h1 {
+            font-size: 1.5rem;
+          }
+
+          h2 {
+            font-size: 1.25rem;
+            color: green;
+          }
+
+          h3 {
+            font-size: 1rem;
+            color: gray;
+          }
+
+          p {
+            font-size: 0.95rem;
+            line-height: 1.4;
+            margin-bottom: 1rem;
+          }
+
+          .add-to-cart {
+            width: 100%;
+            padding: 0.9rem;
+            font-size: 1rem;
+            border-radius: 0.5rem;
+          }
+        }
+      }
+    }
+
+    @media (min-width: 768px) {
+      .image {
+        pointer-events: none;
+      }
+
+      .image-modal {
+        display: none !important;
+      }
+    }
+  }
+}
