@@ -11,13 +11,16 @@ import { Product, PRODUTOS } from 'src/app/shared/products';
 export class DetailsComponent {
     private _searchInput: boolean = false;
     private _cartButton: boolean = true;
+    private _product: Product | undefined;
+    private _categoryName: string = '';
+    private _isImageModalOpen: boolean = false;
 
     constructor(
       private route: ActivatedRoute,
       private router: Router
     ) {}
 
-    get searchInput() {
+    get searchInput(): boolean {
       return this._searchInput;
     }
     
@@ -25,36 +28,38 @@ export class DetailsComponent {
       return this._cartButton;
     }
 
-    produto: Product | undefined;
-    categoriaNome: string = '';
-  
-  
-    ngOnInit(): void {
-      const id = Number(this.route.snapshot.paramMap.get('id'));
-      this.produto = PRODUTOS.find(p => p.id === id);
-      
-      if (!this.produto) {
-        // Produto não encontrado, exibe uma mensagem ou redireciona
-        console.error('Produto não encontrado!');
-        // Você pode usar o Router para redirecionar, se necessário:
-        // this.router.navigate(['/home']);
-      } else {
-        const categoria = CATEGORIES.find(c => c.id === this.produto?.id_category);
-        this.categoriaNome = categoria?.name || '';
-      }
+    get product(): Product | undefined {
+      return this._product;
+    }
+
+    get categoryName(): string {
+      return this._categoryName
     }
     
+    get isImageModalOpen(): boolean {
+      return this._isImageModalOpen;
+    }  
 
-    isImageModalOpen = false;
+    private ngOnInit(): void {
+      const id = Number(this.route.snapshot.paramMap.get('id'));
+      this._product = PRODUTOS.find(p => p.id === id);
+      
+      if (!this._product) {
+        console.error('Produto não encontrado!');
+      } else {
+        const categoria = CATEGORIES.find(c => c.id === this._product?.id_category);
+        this._categoryName = categoria?.name || '';
+      }
+    }
 
     onImageClick(): void {
       if (window.innerWidth < 768) {
-        this.isImageModalOpen = true;
+        this._isImageModalOpen = true;
       }
     }
 
     closeImageModal(): void {
-      this.isImageModalOpen = false;
+      this._isImageModalOpen = false;
     }
 
     navegateToHome(): void {

@@ -2,19 +2,19 @@
 <main class="product-details-container">
     <section class="product-main">
         <section class="image" (click)="onImageClick()">
-            <img [src]="produto?.imagem" alt="Imagem do produto">
+            <img [src]="product?.imagem" alt="Imagem do produto">
         </section>
         
         <!-- Modal de imagem ampliada -->
         <div class="image-modal" *ngIf="isImageModalOpen" (click)="closeImageModal()">
-            <img [src]="produto?.imagem" alt="Imagem ampliada">
+            <img [src]="product?.imagem" alt="Imagem ampliada">
         </div>
   
       <section class="description">
-        <h1>{{ produto?.nome }}</h1>
-        <span class="badge">{{ categoriaNome }}</span>
-        <h2>{{ produto?.preco | currency:'BRL' }}</h2>
-        <p>{{ produto?.descricao }}</p>
+        <h1>{{ product?.nome }}</h1>
+        <span class="badge">{{ categoryName }}</span>
+        <h2>{{ product?.preco | currency:'BRL' }}</h2>
+        <p>{{ product?.descricao }}</p>
         <button class="add-to-cart">Adicionar ao Carrinho</button>
         <button class="back-to-home" (click)="navegateToHome()">Voltar</button>
       </section>
