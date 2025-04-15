@@ -15,7 +15,7 @@
         <span class="badge">{{ categoryName }}</span>
         <h2>{{ product?.preco | currency:'BRL' }}</h2>
         <p>{{ product?.descricao }}</p>
-        <button class="add-to-cart">Adicionar ao Carrinho</button>
+        <button class="add-to-cart" (click)="addToCart($event, product)">Adicionar ao Carrinho</button>
         <button class="back-to-home" (click)="navegateToHome()">Voltar</button>
       </section>
     </section>

@@ -77,6 +77,15 @@
                     font-size: 1rem;
                 }
 
+                ::ng-deep .mat-badge-content {
+                    font-size: 1.5rem;
+                    height: 1.5rem;
+                    width: 1.5rem;
+                    min-width: 24px;
+                    line-height: 24px; 
+                    margin: 10px 5px 0 0;
+                }
+
                 &:hover {
                     transform: scale(1.1);
                 }

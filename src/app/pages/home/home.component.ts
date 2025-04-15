@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { CartService } from 'src/app/services/cart';
 import { CATEGORIES, Category } from 'src/app/shared/category';
 import { Product, PRODUTOS } from 'src/app/shared/products';
+import { SimpleDialogComponent } from 'src/app/shared/simples-dialog/simples-dialog.component';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +20,11 @@ export class HomeComponent {
     private _searchInputValue: string = '';
     private _cartButton: boolean = true;
 
-    constructor(private router: Router) {}
+    constructor(
+      private router: Router,
+      private cartService: CartService,
+      private dialog: MatDialog
+    ) {}
 
     get products() {
       return this._products;
@@ -63,9 +70,21 @@ export class HomeComponent {
       );
     }
   
-    // Método para atualizar o valor de searchInput e aplicar o filtro
     onSearchInputChange(value: string) {
       this._searchInputValue = value;
-      this.filterBySearchInput(); // Chama o filtro sempre que o valor de pesquisa muda
+      this.filterBySearchInput();
+    }
+
+    addToCart(event: Event, product: Product): void {
+      event.stopPropagation();
+      this.cartService.addToCart(product);
+    
+      const dialogRef = this.dialog.open(SimpleDialogComponent, {
+        data: { message: `${product.nome} foi adicionado ao carrinho!` },
+        panelClass: 'notification-dialog-panel',
+        hasBackdrop: false,
+      });
+    
+      setTimeout(() => dialogRef.close(), 1000); // fecha automaticamente
     }
 }

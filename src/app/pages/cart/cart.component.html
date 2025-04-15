@@ -1,3 +1,45 @@
 <app-navbar [searchInput]="searchInput" [cartButton]="cartButton"></app-navbar>
-<p>cart works!</p>
+
+<main class="cart-container">
+  <h1>Carrinho de Compras</h1>
+
+  <section class="cards-list" *ngIf="cartItems.length > 0; else emptyCart">
+    <section class="cart-cards">
+      <mat-card class="cart-card" *ngFor="let item of cartItems; trackBy: trackById">
+          <img mat-card-image [src]="item.imagem" alt="{{ item.nome }}">
+  
+          <mat-card-content class="info">
+            <h2>{{ item.nome }}</h2>
+            <p>{{ item.descricao.length > 35 ? (item.descricao | slice:0:35) + '...' : item.descricao }}</p>
+            <p><strong>{{ item.preco | currency:'BRL' }}</strong></p>
+  
+            <div class="quantidade">
+                <label>Quantidade:</label>
+                <div class="quantidade-controle">
+                    <button class="btn-quantidade" (click)="decreaseQuantity(item)"><i class="fas fa-minus"></i></button>
+                    <span> {{ item.quantidade }} </span>
+                    <button class="btn-quantidade" (click)="increaseQuantity(item)"><i class="fas fa-plus"></i></button>
+                </div>
+            </div>
+              
+  
+        </mat-card-content>
+        <button mat-raised-button color="warn" (click)="removeFromCart(item)">
+            <i class="fas fa-trash"></i>
+        </button>
+      </mat-card>
+    </section>
+  
+    <div class="total">
+      <h3>Total: {{ total | currency:'BRL' }}</h3>
+      <button mat-raised-button color="primary" class="checkout">Finalizar Compra</button>
+    </div>
+  </section>
+  
+  <ng-template #emptyCart>
+    <p>O carrinho está vazio.</p>
+  </ng-template>
+  
+</main>
+
 <app-footer></app-footer>

@@ -6,6 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 import { CartComponent } from './cart/cart.component';
 import { DetailsComponent } from './details/details.component';
 import { MaterialModule } from '../material/material.module';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -19,7 +20,8 @@ import { MaterialModule } from '../material/material.module';
     CommonModule,
     RoutingModule,
     SharedModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule,
   ]
 })
 export class PagesModule { }

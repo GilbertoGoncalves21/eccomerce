@@ -24,7 +24,7 @@
                     <h5>{{ product.preco | currency:'BRL' }}</h5>
                 </mat-card-content>
                 <mat-card-actions class="adicionarProduto">
-                    <button mat-button color="accent"><i class="fas fa-cart-plus"></i>&nbsp;&nbsp;Adicionar ao Carrinho</button>
+                    <button mat-button color="accent" (click)="addToCart($event, product)"><i class="fas fa-cart-plus"></i>&nbsp;&nbsp;Adicionar ao Carrinho</button>
                 </mat-card-actions>
             </mat-card>
         </section>

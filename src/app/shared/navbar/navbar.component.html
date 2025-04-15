@@ -4,6 +4,15 @@
         <section class="search" *ngIf="searchInput">
             <input type="text" name="Buscar" placeholder="Pesquise aqui..">
         </section>
-        <button class="cart" (click)="navigateToCart()" *ngIf="cartButton"><i class="fas fa-shopping-cart"></i>&nbsp;&nbsp;Meu Carrinho</button>
+        <button class="cart"
+            [ngClass]="{ 'badge-active': cartItemCount > 0 }"
+            matBadge="{{ cartItemCount }}"
+            matBadgeHidden="{{ cartItemCount === 0 }}"
+            matBadgePosition="above after"
+            matBadgeColor="warn"
+            (click)="navigateToCart()"
+            *ngIf="cartButton">
+            <i class="fas fa-shopping-cart"></i>&nbsp;&nbsp;Meu Carrinho
+        </button>
     </section>
 </nav>
