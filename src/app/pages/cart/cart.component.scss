@@ -20,12 +20,12 @@
       justify-content: space-between;
       align-items: center;
       width: 70%;
-      padding-bottom: 4rem;
       height: 100%;
       overflow-y: auto;
 
       .cart-cards {
         width: 100%;
+        padding-bottom: 4rem;
   
         .cart-item {
           display: flex;
