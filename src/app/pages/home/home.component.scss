@@ -194,7 +194,7 @@
       .lista-produtos {
         .cards {
           .card {
-            width: 30%;
+            width: 20%;
           }
         }
       }
@@ -212,7 +212,7 @@
         .cards {
           padding: 2rem 0;
           .card {
-            width: 45%;
+            width: 30%;
           }
         }
       }
@@ -224,7 +224,29 @@
       .lista-produtos {
         .cards {
           .card {
-            width: 80%;
+            width: 40%;
+            height: 330px;
+
+            .conteudo {
+              h2 {
+                font-size: 1.4rem;
+              }
+
+              h5 {
+                font-size: 1rem;
+              }
+
+              .badge {
+                padding: 0.15rem 0.40rem;
+                font-size: 0.55rem;
+                margin-top: 0.5rem;
+              }
+            }
+
+            .adicionarProduto {
+              margin-top: 0.5rem;
+              bottom: 0.2rem;
+            }
           }
         }
       }
