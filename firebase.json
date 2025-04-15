@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/eccomerce-system",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
