@@ -222,17 +222,7 @@
   @media (max-width: 650px) {
     main {
       .filtros {
-        width: 100%;
-        height: 10vh;
-        top: 0;
-        margin: 0;
-        padding: 0;
-        background-color: rgb(215, 211, 211);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        position: relative;
+        display: none;
       }
 
       .lista-produtos {
