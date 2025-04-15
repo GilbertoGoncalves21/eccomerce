@@ -88,6 +88,7 @@ export class DetailsComponent {
   }
 
   addToCart(event: Event, product: Product): void {
+    event.stopPropagation();
     this.cartService.addToCart(product);
   }
 }

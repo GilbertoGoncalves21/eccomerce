@@ -78,13 +78,5 @@ export class HomeComponent {
     addToCart(event: Event, product: Product): void {
       event.stopPropagation();
       this.cartService.addToCart(product);
-    
-      const dialogRef = this.dialog.open(SimpleDialogComponent, {
-        data: { message: `${product.nome} foi adicionado ao carrinho!` },
-        panelClass: 'notification-dialog-panel',
-        hasBackdrop: false,
-      });
-    
-      setTimeout(() => dialogRef.close(), 1000); // fecha automaticamente
     }
 }
