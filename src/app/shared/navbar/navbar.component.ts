@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart';
 
@@ -10,7 +10,11 @@ import { CartService } from 'src/app/services/cart';
 export class NavbarComponent implements OnInit {
     private _cartItemCount: number = 0;
 
-    constructor(private router: Router, private cartService: CartService) {}
+    constructor(
+      private router: Router,
+      private cartService: CartService,
+      private changeDetectorRef: ChangeDetectorRef
+    ) {}
 
     @Input() searchInput: boolean = false;
     @Input() cartButton: boolean = false;
@@ -21,9 +25,10 @@ export class NavbarComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.cartService.cartCount$.subscribe(count => {
+          this.cartService.cartCount$.subscribe(count => {
           this._cartItemCount = count;
         });
+        this.changeDetectorRef.detectChanges();
       }
 
     onSearchChange(value: string) {

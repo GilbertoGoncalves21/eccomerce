@@ -1,23 +1,18 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cart';
-import { Product } from 'src/app/shared/products';
-
-interface CartItem extends Product {
-  quantidade: number;
-}
+import { CartItem } from 'src/app/shared/products'; // Se CartItem for exportado lá
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.scss']
+  styleUrls: ['./cart.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CartComponent {
+export class CartComponent implements OnInit {
+  private _cartItems: CartItem[] = [];
+  private _total: number = 0;
   private _searchInput: boolean = false;
   private _cartButton: boolean = false;
-  private _cartProducts: Product[] = [];
-
-  cartItems: CartItem[] = [];
-  total: number = 0;
 
   constructor(private cartService: CartService) {}
 
@@ -29,36 +24,38 @@ export class CartComponent {
     return this._cartButton;
   }
 
-  ngOnInit(): void {
-    const cart = localStorage.getItem('cart');
-    this.cartItems = this.cartService.getCart().map(product => ({ ...product, quantidade: 1 }));
-    this.updateTotal();
-    console.log('🛒 Produtos no carrinho:', this.cartItems);
+  get cartItems(): CartItem[] {
+    return this._cartItems;
   }
   
+  get total(): number {
+    return this._total;
+  }
+
+  ngOnInit(): void {
+    this.cartService.cart$.subscribe(items => {
+      this._cartItems = items;
+      this.updateTotal();
+    });
+  }
+
   trackById(index: number, item: CartItem): number {
     return item.id;
   }
 
   updateTotal(): void {
-    this.total = this.cartItems.reduce((acc, item) => acc + item.preco * item.quantidade, 0);
-    localStorage.setItem('cart', JSON.stringify(this.cartItems));
+    this._total = this._cartItems.reduce((acc, item) => acc + item.preco * item.quantidade, 0);
   }
 
   removeFromCart(item: CartItem): void {
-    this.cartItems = this.cartItems.filter(i => i.id !== item.id);
-    this.updateTotal();
+    this.cartService.removeFromCart(item.id);
   }
 
   increaseQuantity(item: CartItem): void {
-    item.quantidade++;
-    this.updateTotal();
+    this.cartService.increaseQuantity(item.id);
   }
-  
+
   decreaseQuantity(item: CartItem): void {
-    if (item.quantidade > 1) {
-      item.quantidade--;
-      this.updateTotal();
-    }
+    this.cartService.decreaseQuantity(item.id);
   }
 }

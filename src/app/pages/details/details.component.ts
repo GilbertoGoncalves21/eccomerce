@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart';
@@ -10,6 +10,7 @@ import { SimpleDialogComponent } from 'src/app/shared/simples-dialog/simples-dia
   selector: 'app-details',
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DetailsComponent {
   private _searchInput: boolean = false;
