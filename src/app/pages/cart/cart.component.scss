@@ -17,70 +17,108 @@
     .cards-list {
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
       width: 70%;
+      padding: auto;
+      height: 100%;
+      overflow-y: auto;
 
       .cart-cards {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
         width: 100%;
-        gap: 1rem;
-        padding: 1rem;
-
-        .cart-card {
+  
+        .cart-item {
           display: flex;
-          flex-direction: row;
-          justify-content: center;
           align-items: center;
+          justify-content: space-between;
+          padding: 1rem 0;
           width: 100%;
-          gap: 1rem;
-          padding: 1rem;
-
+          height: 5rem;
+          border-bottom: 1px solid #ccc;
+        
           img {
-            width: 70px;
-            height: 70px;
+            width: 30%;
+            height: 90%;
             object-fit: cover;
-            border-radius: 8px;
+            border-radius: 20px;
           }
-
+        
           .info {
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
-
-            h2,
-            p {
-              padding: 0;
+            width: 40%;
+            gap: 0.3rem;
+            flex: 1;
+            padding: 0 1rem;
+        
+            h2, p {
               margin: 0;
+              padding: 0;
+              font-size: 0.9rem;
             }
-
+        
             .quantidade {
               display: flex;
               align-items: center;
               gap: 0.5rem;
-
-              .btn-quantidade {
-                padding: 0.5rem;
-                background-color: greenyellow;
-                border-radius: 15px;
-                border: none;
+        
+              .quantidade-controle {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+        
+                .btn-quantidade {
+                  padding: 0.4rem;
+                  border-radius: 50%;
+                  background-color: greenyellow;
+                  border: none;
+                }
               }
             }
           }
+        
+          .remove {
+            background: none;
+            border: none;
+            color: red;
+            font-size: 1.2rem;
+            cursor: pointer;
+          }
         }
+      }
+
+      @media (max-width: 850px) {
+        width: 80%;
+      }
+
+      @media (max-width: 600px) {
+        width: 95%;
       }
     }
   }
 
   .total {
+    position: fixed;
     padding: 1rem;
     text-align: right;
+    bottom: 2rem;
+    border-radius: 30px;
+    width: 50%;
+    margin: 0 auto;
+    height: 3rem;
 
     .checkout {
-      margin-top: 0.5rem;
+      width: 100%;
+      height: 100%;
+      
+      h3 {
+        padding: 0;
+        margin: 0;
+      }
+    }
+
+    @media (max-width: 600px) {
+      width: 70%;
     }
   }
 }

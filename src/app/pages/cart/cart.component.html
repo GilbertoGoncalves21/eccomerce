@@ -5,34 +5,32 @@
 
   <section class="cards-list" *ngIf="cartItems.length > 0; else emptyCart">
     <section class="cart-cards">
-      <mat-card class="cart-card" *ngFor="let item of cartItems; trackBy: trackById">
-          <img mat-card-image [src]="item.imagem" alt="{{ item.nome }}">
-  
-          <mat-card-content class="info">
-            <h2>{{ item.nome }}</h2>
-            <p>{{ item.descricao.length > 35 ? (item.descricao | slice:0:35) + '...' : item.descricao }}</p>
-            <p><strong>{{ item.preco | currency:'BRL' }}</strong></p>
-  
-            <div class="quantidade">
-                <label>Quantidade:</label>
-                <div class="quantidade-controle">
-                    <button class="btn-quantidade" (click)="decreaseQuantity(item)"><i class="fas fa-minus"></i></button>
-                    <span> {{ item.quantidade }} </span>
-                    <button class="btn-quantidade" (click)="increaseQuantity(item)"><i class="fas fa-plus"></i></button>
-                </div>
+      <div class="cart-item" *ngFor="let item of cartItems; trackBy: trackById">
+        <img [src]="item.imagem" alt="{{ item.nome }}">
+    
+        <div class="info">
+          <h2>{{ item.nome }}</h2>
+          <p>{{ item.descricao.length > 35 ? (item.descricao | slice:0:20) + '...' : item.descricao }}</p>
+          <p><strong>{{ item.preco | currency:'BRL' }}</strong></p>
+    
+          <div class="quantidade">
+            <label>Quantidade:</label>
+            <div class="quantidade-controle">
+              <button class="btn-quantidade" (click)="decreaseQuantity(item)"><i class="fas fa-minus"></i></button>
+              <span>{{ item.quantidade }}</span>
+              <button class="btn-quantidade" (click)="increaseQuantity(item)"><i class="fas fa-plus"></i></button>
             </div>
-              
-  
-        </mat-card-content>
-        <button mat-raised-button color="warn" (click)="removeFromCart(item)">
-            <i class="fas fa-trash"></i>
+          </div>
+        </div>
+    
+        <button class="remove" (click)="removeFromCart(item)">
+          <i class="fas fa-trash"></i>
         </button>
-      </mat-card>
+      </div>
     </section>
   
     <div class="total">
-      <h3>Total: {{ total | currency:'BRL' }}</h3>
-      <button mat-raised-button color="primary" class="checkout">Finalizar Compra</button>
+      <button mat-raised-button color="primary" class="checkout"><h3>Total: {{ total | currency:'BRL' }} </h3> Finalizar Compra</button>
     </div>
   </section>
   

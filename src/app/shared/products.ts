@@ -48,4 +48,16 @@ export const PRODUTOS: Product[] = [
       preco: 3.50,
       imagem: 'assets/bebida2.webp'
     },
-  ];
+    {
+      id: 6,
+      nome: 'Água Mineral com Gás',
+      id_category: 3,
+      descricao: 'Água Mineral Crystal 500ml com gás.',
+      preco: 3.50,
+      imagem: 'assets/bebida2.webp'
+    },
+];
+
+export interface CartItem extends Product {
+  quantidade: number;
+}
