@@ -1,27 +1,67 @@
-# EccomerceSystem
++52
+-14
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.16.
+# E-commerce App
 
-## Development server
+Front-end de um pequeno e-commerce desenvolvido em Angular. O projeto demonstra
+um catálogo de produtos simples com carrinho de compras e finalização do pedido
+via WhatsApp.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+![Screenshot da home](./src/assets/lanche.jpg)
 
-## Code scaffolding
+## Recursos
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Listagem de produtos com filtro por categoria
+- Adição e remoção de itens do carrinho
+- Quantidade de itens exibida no ícone do carrinho
+- Envio do pedido para o WhatsApp (número configurável em `environment.ts`)
 
-## Build
+Para voltar para a página inicial basta **clicar na logo** localizada na barra
+superior.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Executando o projeto
 
-## Running unit tests
+1. Instale as dependências:
+   ```bash
+   npm install
+   ```
+2. Inicie o servidor de desenvolvimento:
+   ```bash
+   ng serve
+   ```
+   A aplicação estará disponível em `http://localhost:4200`.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Build de produção
 
-## Running end-to-end tests
+Para gerar os artefatos de produção execute:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```bash
+ng build
+```
 
-## Further help
+Os arquivos serão gerados em `dist/`.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Testes
+
+Para executar os testes unitários:
+
+```bash
+ng test
+```
+
+> **Observação:** os testes utilizam o Karma + Chrome. Certifique-se de que o
+> navegador esteja instalado no ambiente.
+
+## Configuração do WhatsApp
+
+Defina o número de telefone do WhatsApp em `src/environments/environment.ts`:
+
+```ts
+export const environment = {
+  // ...
+  whatsappPhone: '5547999999999'
+};
+```
+
+A mesma configuração pode ser feita no arquivo `environment.prod.ts` para o
+build de produção.
