@@ -30,7 +30,7 @@
     </section>
   
     <div class="total">
-      <button mat-raised-button color="primary" class="checkout"><h3>Total: {{ total | currency:'BRL' }} </h3> Finalizar Compra</button>
+      <button mat-raised-button color="primary" class="checkout" (click)="finalizePurchase()"><h3>Total: {{ total | currency:'BRL' }} </h3> Finalizar Compra</button>
     </div>
   </section>
   

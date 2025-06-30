@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cart';
-import { CartItem } from 'src/app/shared/products'; // Se CartItem for exportado lá
+import { CartItem } from 'src/app/shared/products';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-cart',
@@ -57,5 +58,21 @@ export class CartComponent implements OnInit {
 
   decreaseQuantity(item: CartItem): void {
     this.cartService.decreaseQuantity(item.id);
+  }
+
+  finalizePurchase(): void {
+    if (this._cartItems.length === 0) {
+      return;
+    }
+
+    const messageLines = this._cartItems.map(
+      item => `- ${item.nome} (x${item.quantidade})`
+    );
+    const message =
+      'Olá, gostaria de finalizar meu pedido:\n' +
+      messageLines.join('\n') +
+      `\nTotal: R$ ${this._total.toFixed(2)}`;
+    const url = `https://wa.me/${environment.whatsappPhone}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank');
   }
 }
