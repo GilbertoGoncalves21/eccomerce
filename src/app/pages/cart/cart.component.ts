@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart';
 import { CartItem } from 'src/app/shared/products';
 import { environment } from 'src/environments/environment';
@@ -15,7 +16,7 @@ export class CartComponent implements OnInit {
   private _searchInput: boolean = false;
   private _cartButton: boolean = false;
 
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService, private router: Router) {}
 
   get searchInput() {
     return this._searchInput;
@@ -68,11 +69,19 @@ export class CartComponent implements OnInit {
     const messageLines = this._cartItems.map(
       item => `- ${item.nome} (x${item.quantidade})`
     );
-    const message =
-      'Olá, gostaria de finalizar meu pedido:\n' +
-      messageLines.join('\n') +
-      `\nTotal: R$ ${this._total.toFixed(2)}`;
-    const url = `https://wa.me/${environment.whatsappPhone}?text=${encodeURIComponent(message)}`;
-    window.open(url, '_blank');
+    
+    const message = 'Olá, gostaria de finalizar meu pedido:\n\n' + messageLines.join('\n') + `\n\n*Total:* R$ ${this._total.toFixed(2)}`;
+    
+    window.open(`https://wa.me/${environment.whatsappPhone}?text=${encodeURIComponent(message)}`, '_blank');
+    
+    for (let i = this._cartItems.length - 1; i >= 0; i--) {
+        this.cartService.removeFromCart(this._cartItems[i].id);
+    }
+
+    this._cartItems = [];
+    this.updateTotal();
+    this._searchInput = false;
+    this._cartButton = false;
+    this.router.navigate(['/']);
   }
 }

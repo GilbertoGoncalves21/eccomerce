@@ -13,7 +13,7 @@ export const environment = {
     appId: "1:1091352523254:web:5361a8e2ec65fabebb57d7",
     measurementId: "G-VWCTF5MQBP"
   },
-  whatsappPhone: '5547999999999'
+  whatsappPhone: '5542999533268'
 };
 
 /*
